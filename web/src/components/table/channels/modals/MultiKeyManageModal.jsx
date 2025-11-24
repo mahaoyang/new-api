@@ -47,11 +47,13 @@ import {
   showSuccess,
   timestamp2string,
 } from '../../../../helpers';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 
 const { Text } = Typography;
 
 const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
   const { t } = useTranslation();
+  const colors = useThemeColors();
   const [loading, setLoading] = useState(false);
   const [keyStatusList, setKeyStatusList] = useState([]);
   const [operationLoading, setOperationLoading] = useState({});
@@ -484,16 +486,16 @@ const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
         <div
           className='rounded-xl p-4 mb-3'
           style={{
-            background: 'var(--semi-color-bg-1)',
-            border: '1px solid var(--semi-color-border)',
+            background: colors.bgElevated,
+            border: `1px solid ${colors.border}`,
           }}
         >
           <Row gutter={16} align='middle'>
             <Col span={8}>
               <div
                 style={{
-                  background: 'var(--semi-color-bg-0)',
-                  border: '1px solid var(--semi-color-border)',
+                  background: colors.bgBase,
+                  border: `1px solid ${colors.border}`,
                   borderRadius: 12,
                   padding: 12,
                 }}
@@ -509,7 +511,7 @@ const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
                     {enabledCount}
                   </Text>
                   <Text
-                    style={{ fontSize: 18, color: 'var(--semi-color-text-2)' }}
+                    style={{ fontSize: 18, color: colors.textTertiary }}
                   >
                     / {total}
                   </Text>
@@ -526,8 +528,8 @@ const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
             <Col span={8}>
               <div
                 style={{
-                  background: 'var(--semi-color-bg-0)',
-                  border: '1px solid var(--semi-color-border)',
+                  background: colors.bgBase,
+                  border: `1px solid ${colors.border}`,
                   borderRadius: 12,
                   padding: 12,
                 }}
@@ -543,7 +545,7 @@ const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
                     {manualDisabledCount}
                   </Text>
                   <Text
-                    style={{ fontSize: 18, color: 'var(--semi-color-text-2)' }}
+                    style={{ fontSize: 18, color: colors.textTertiary }}
                   >
                     / {total}
                   </Text>
@@ -560,8 +562,8 @@ const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
             <Col span={8}>
               <div
                 style={{
-                  background: 'var(--semi-color-bg-0)',
-                  border: '1px solid var(--semi-color-border)',
+                  background: colors.bgBase,
+                  border: `1px solid ${colors.border}`,
                   borderRadius: 12,
                   padding: 12,
                 }}
@@ -577,7 +579,7 @@ const MultiKeyManageModal = ({ visible, onCancel, channel, onRefresh }) => {
                     {autoDisabledCount}
                   </Text>
                   <Text
-                    style={{ fontSize: 18, color: 'var(--semi-color-text-2)' }}
+                    style={{ fontSize: 18, color: colors.textTertiary }}
                   >
                     / {total}
                   </Text>

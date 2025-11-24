@@ -27,6 +27,7 @@ import {
   verifyJSON,
 } from '../../../../helpers';
 import { useIsMobile } from '../../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 import { CHANNEL_OPTIONS } from '../../../../constants';
 import {
   SideSheet,
@@ -120,6 +121,7 @@ function type2secretPrompt(type) {
 
 const EditChannelModal = (props) => {
   const { t } = useTranslation();
+  const colors = useThemeColors();
   const channelId = props.editingChannel.id;
   const isEdit = channelId !== undefined;
   const [loading, setLoading] = useState(isEdit);
@@ -1613,7 +1615,7 @@ const EditChannelModal = (props) => {
                         <Text className='text-lg font-medium'>
                           {t('基本信息')}
                         </Text>
-                        <div className='text-xs text-gray-600'>
+                        <div className='text-xs' style={{ color: colors.textTertiary }}>
                           {t('渠道的基本配置信息')}
                         </div>
                       </div>
@@ -2152,7 +2154,7 @@ const EditChannelModal = (props) => {
                           <Text className='text-lg font-medium'>
                             {t('API 配置')}
                           </Text>
-                          <div className='text-xs text-gray-600'>
+                          <div className='text-xs' style={{ color: colors.textTertiary }}>
                             {t('API 地址和相关配置')}
                           </div>
                         </div>
@@ -2377,7 +2379,7 @@ const EditChannelModal = (props) => {
                         <Text className='text-lg font-medium'>
                           {t('模型配置')}
                         </Text>
-                        <div className='text-xs text-gray-600'>
+                        <div className='text-xs' style={{ color: colors.textTertiary }}>
                           {t('模型选择和映射设置')}
                         </div>
                       </div>
@@ -2588,7 +2590,7 @@ const EditChannelModal = (props) => {
                         <Text className='text-lg font-medium'>
                           {t('高级设置')}
                         </Text>
-                        <div className='text-xs text-gray-600'>
+                        <div className='text-xs' style={{ color: colors.textTertiary }}>
                           {t('渠道的高级配置选项')}
                         </div>
                       </div>
@@ -2684,7 +2686,8 @@ const EditChannelModal = (props) => {
                       extraText={
                         <div className='flex gap-2 flex-wrap'>
                           <Text
-                            className='!text-semi-color-primary cursor-pointer'
+                            className='cursor-pointer'
+                            style={{ color: colors.primary }}
                             onClick={() =>
                               handleInputChange(
                                 'param_override',
@@ -2695,7 +2698,8 @@ const EditChannelModal = (props) => {
                             {t('旧格式模板')}
                           </Text>
                           <Text
-                            className='!text-semi-color-primary cursor-pointer'
+                            className='cursor-pointer'
+                            style={{ color: colors.primary }}
                             onClick={() =>
                               handleInputChange(
                                 'param_override',
@@ -2747,7 +2751,8 @@ const EditChannelModal = (props) => {
                         <div className='flex flex-col gap-1'>
                           <div className='flex gap-2 flex-wrap items-center'>
                             <Text
-                              className='!text-semi-color-primary cursor-pointer'
+                              className='cursor-pointer'
+                              style={{ color: colors.primary }}
                               onClick={() =>
                                 handleInputChange(
                                   'header_override',
@@ -2808,7 +2813,7 @@ const EditChannelModal = (props) => {
                     {/* 字段透传控制 - OpenAI 渠道 */}
                     {inputs.type === 1 && (
                       <>
-                        <div className='mt-4 mb-2 text-sm font-medium text-gray-700'>
+                        <div className='mt-4 mb-2 text-sm font-medium' style={{ color: colors.textSecondary }}>
                           {t('字段透传控制')}
                         </div>
 
@@ -2865,7 +2870,7 @@ const EditChannelModal = (props) => {
                     {/* 字段透传控制 - Claude 渠道 */}
                     {inputs.type === 14 && (
                       <>
-                        <div className='mt-4 mb-2 text-sm font-medium text-gray-700'>
+                        <div className='mt-4 mb-2 text-sm font-medium' style={{ color: colors.textSecondary }}>
                           {t('字段透传控制')}
                         </div>
 
