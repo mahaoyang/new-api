@@ -26,9 +26,11 @@ import {
   IllustrationConstructionDark,
 } from '@douyinfe/semi-illustrations';
 import { useTranslation } from 'react-i18next';
+import { useThemeColors } from '../../hooks/common/useThemeColors';
 
 const About = () => {
   const { t } = useTranslation();
+  const colors = useThemeColors();
   const [about, setAbout] = useState('');
   const [aboutLoaded, setAboutLoaded] = useState(false);
   const currentYear = new Date().getFullYear();
@@ -67,7 +69,7 @@ const About = () => {
         href='https://github.com/QuantumNous/new-api'
         target='_blank'
         rel='noopener noreferrer'
-        className='!text-semi-color-primary'
+        style={{ color: colors.primary }}
       >
         https://github.com/QuantumNous/new-api
       </a>
@@ -76,7 +78,7 @@ const About = () => {
           href='https://github.com/QuantumNous/new-api'
           target='_blank'
           rel='noopener noreferrer'
-          className='!text-semi-color-primary'
+          style={{ color: colors.primary }}
         >
           NewAPI
         </a>{' '}
@@ -85,7 +87,7 @@ const About = () => {
           href='https://github.com/QuantumNous'
           target='_blank'
           rel='noopener noreferrer'
-          className='!text-semi-color-primary'
+          style={{ color: colors.primary }}
         >
           QuantumNous
         </a>{' '}
@@ -94,7 +96,7 @@ const About = () => {
           href='https://github.com/songquanpeng/one-api/releases/tag/v0.5.4'
           target='_blank'
           rel='noopener noreferrer'
-          className='!text-semi-color-primary'
+          style={{ color: colors.primary }}
         >
           One API v0.5.4
         </a>{' '}
@@ -103,7 +105,7 @@ const About = () => {
           href='https://github.com/songquanpeng'
           target='_blank'
           rel='noopener noreferrer'
-          className='!text-semi-color-primary'
+          style={{ color: colors.primary }}
         >
           JustSong
         </a>
@@ -114,7 +116,7 @@ const About = () => {
           href='https://github.com/songquanpeng/one-api/blob/v0.5.4/LICENSE'
           target='_blank'
           rel='noopener noreferrer'
-          className='!text-semi-color-primary'
+          style={{ color: colors.primary }}
         >
           {t('MIT许可证')}
         </a>
@@ -123,7 +125,7 @@ const About = () => {
           href='https://www.gnu.org/licenses/agpl-3.0.html'
           target='_blank'
           rel='noopener noreferrer'
-          className='!text-semi-color-primary'
+          style={{ color: colors.primary }}
         >
           {t('AGPL v3.0协议')}
         </a>

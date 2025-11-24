@@ -30,6 +30,7 @@ import {
 import { IconSearch } from '@douyinfe/semi-icons';
 import { copy, showError, showInfo, showSuccess } from '../../../../helpers';
 import { MODEL_TABLE_PAGE_SIZE } from '../../../../constants';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 
 const ModelTestModal = ({
   showModelTestModal,
@@ -52,6 +53,7 @@ const ModelTestModal = ({
   isMobile,
   t,
 }) => {
+  const colors = useThemeColors();
   const hasChannel = Boolean(currentTestChannel);
 
   const filteredModels = hasChannel
@@ -207,7 +209,8 @@ const ModelTestModal = ({
             <div className='flex items-center gap-2'>
               <Typography.Text
                 strong
-                className='!text-[var(--semi-color-text-0)] !text-base'
+                className='!text-base'
+                style={{ color: colors.textPrimary }}
               >
                 {currentTestChannel.name} {t('渠道的模型测试')}
               </Typography.Text>

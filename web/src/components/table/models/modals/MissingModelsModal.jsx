@@ -35,6 +35,7 @@ import { IconSearch } from '@douyinfe/semi-icons';
 import { API, showError } from '../../../../helpers';
 import { MODEL_TABLE_PAGE_SIZE } from '../../../../constants';
 import { useIsMobile } from '../../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 
 const MissingModelsModal = ({ visible, onClose, onConfigureModel, t }) => {
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,7 @@ const MissingModelsModal = ({ visible, onClose, onConfigureModel, t }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   const fetchMissing = async () => {
     setLoading(true);
@@ -116,7 +118,8 @@ const MissingModelsModal = ({ visible, onClose, onConfigureModel, t }) => {
           <div className='flex items-center gap-2'>
             <Typography.Text
               strong
-              className='!text-[var(--semi-color-text-0)] !text-base'
+              className='!text-base'
+              style={{ color: colors.textPrimary }}
             >
               {t('未配置的模型列表')}
             </Typography.Text>

@@ -20,12 +20,14 @@ For commercial licensing, please contact support@quantumnous.com
 import React, { useEffect, useState } from 'react';
 import { Modal, RadioGroup, Radio, Steps, Button } from '@douyinfe/semi-ui';
 import { useIsMobile } from '../../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 
 const SyncWizardModal = ({ visible, onClose, onConfirm, loading, t }) => {
   const [step, setStep] = useState(0);
   const [option, setOption] = useState('official');
   const [locale, setLocale] = useState('zh');
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   useEffect(() => {
     if (visible) {
@@ -100,7 +102,7 @@ const SyncWizardModal = ({ visible, onClose, onConfirm, loading, t }) => {
 
       {step === 1 && (
         <div className='mt-2'>
-          <div className='mb-2 text-[var(--semi-color-text-2)]'>
+          <div className='mb-2' style={{ color: colors.textTertiary }}>
             {t('请选择同步语言')}
           </div>
           <div className='flex justify-center'>

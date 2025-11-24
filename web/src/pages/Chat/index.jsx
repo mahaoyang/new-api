@@ -22,11 +22,13 @@ import { useTokenKeys } from '../../hooks/chat/useTokenKeys';
 import { Spin } from '@douyinfe/semi-ui';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useThemeColors } from '../../hooks/common/useThemeColors';
 
 const ChatPage = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const { keys, serverAddress, isLoading } = useTokenKeys(id);
+  const colors = useThemeColors();
 
   const comLink = (key) => {
     // console.log('chatLink:', chatLink);
@@ -71,7 +73,7 @@ const ChatPage = () => {
         <Spin size='large' spinning={true} tip={null} />
         <span
           className='whitespace-nowrap mt-2 text-center'
-          style={{ color: 'var(--semi-color-primary)' }}
+          style={{ color: colors.primary }}
         >
           {t('正在跳转...')}
         </span>
