@@ -695,14 +695,14 @@ export const calculateModelPrice = ({
 };
 
 // 格式化价格信息（用于卡片视图）
-export const formatPriceInfo = (priceData, t) => {
+export const formatPriceInfo = (priceData, t, colors) => {
   if (priceData.isPerToken) {
     return (
       <>
-        <span style={{ color: 'var(--semi-color-text-1)' }}>
+        <span style={{ color: colors.textSecondary }}>
           {t('输入')} {priceData.inputPrice}/{priceData.unitLabel}
         </span>
-        <span style={{ color: 'var(--semi-color-text-1)' }}>
+        <span style={{ color: colors.textSecondary }}>
           {t('输出')} {priceData.completionPrice}/{priceData.unitLabel}
         </span>
       </>
@@ -711,7 +711,7 @@ export const formatPriceInfo = (priceData, t) => {
 
   return (
     <>
-      <span style={{ color: 'var(--semi-color-text-1)' }}>
+      <span style={{ color: colors.textSecondary }}>
         {t('模型价格')} {priceData.price}
       </span>
     </>
@@ -731,6 +731,7 @@ export const createCardProPagination = ({
   pageSizeOpts = [10, 20, 50, 100],
   showSizeChanger = true,
   t = (key) => key,
+  colors,
 }) => {
   if (!total || total <= 0) return null;
 
@@ -744,7 +745,7 @@ export const createCardProPagination = ({
       {!isMobile && (
         <span
           className='text-sm select-none'
-          style={{ color: 'var(--semi-color-text-2)' }}
+          style={{ color: colors.textTertiary }}
         >
           {totalText}
         </span>

@@ -27,11 +27,13 @@ import AddUserModal from './modals/AddUserModal';
 import EditUserModal from './modals/EditUserModal';
 import { useUsersData } from '../../../hooks/users/useUsersData';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../hooks/common/useThemeColors';
 import { createCardProPagination } from '../../../helpers/utils';
 
 const UsersPage = () => {
   const usersData = useUsersData();
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   const {
     // Modal state
@@ -112,6 +114,7 @@ const UsersPage = () => {
           onPageSizeChange: usersData.handlePageSizeChange,
           isMobile: isMobile,
           t: usersData.t,
+          colors: colors,
         })}
         t={usersData.t}
       >

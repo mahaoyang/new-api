@@ -27,11 +27,13 @@ import ColumnSelectorModal from './modals/ColumnSelectorModal';
 import ContentModal from './modals/ContentModal';
 import { useTaskLogsData } from '../../../hooks/task-logs/useTaskLogsData';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../hooks/common/useThemeColors';
 import { createCardProPagination } from '../../../helpers/utils';
 
 const TaskLogsPage = () => {
   const taskLogsData = useTaskLogsData();
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   return (
     <>
@@ -59,6 +61,7 @@ const TaskLogsPage = () => {
             onPageSizeChange: taskLogsData.handlePageSizeChange,
             isMobile: isMobile,
             t: taskLogsData.t,
+            colors: colors,
           })}
           t={taskLogsData.t}
         >

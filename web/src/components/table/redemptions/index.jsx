@@ -26,11 +26,13 @@ import RedemptionsDescription from './RedemptionsDescription';
 import EditRedemptionModal from './modals/EditRedemptionModal';
 import { useRedemptionsData } from '../../../hooks/redemptions/useRedemptionsData';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../hooks/common/useThemeColors';
 import { createCardProPagination } from '../../../helpers/utils';
 
 const RedemptionsPage = () => {
   const redemptionsData = useRedemptionsData();
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   const {
     // Edit state
@@ -110,6 +112,7 @@ const RedemptionsPage = () => {
           onPageSizeChange: redemptionsData.handlePageSizeChange,
           isMobile: isMobile,
           t: redemptionsData.t,
+          colors: colors,
         })}
         t={redemptionsData.t}
       >

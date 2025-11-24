@@ -27,11 +27,13 @@ import ColumnSelectorModal from './modals/ColumnSelectorModal';
 import ContentModal from './modals/ContentModal';
 import { useMjLogsData } from '../../../hooks/mj-logs/useMjLogsData';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../hooks/common/useThemeColors';
 import { createCardProPagination } from '../../../helpers/utils';
 
 const MjLogsPage = () => {
   const mjLogsData = useMjLogsData();
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   return (
     <>
@@ -52,6 +54,7 @@ const MjLogsPage = () => {
             onPageSizeChange: mjLogsData.handlePageSizeChange,
             isMobile: isMobile,
             t: mjLogsData.t,
+            colors: colors,
           })}
           t={mjLogsData.t}
         >

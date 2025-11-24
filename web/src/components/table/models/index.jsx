@@ -27,11 +27,13 @@ import EditModelModal from './modals/EditModelModal';
 import EditVendorModal from './modals/EditVendorModal';
 import { useModelsData } from '../../../hooks/models/useModelsData';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../hooks/common/useThemeColors';
 import { createCardProPagination } from '../../../helpers/utils';
 
 const ModelsPage = () => {
   const modelsData = useModelsData();
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   const {
     // Edit state
@@ -135,6 +137,7 @@ const ModelsPage = () => {
           onPageSizeChange: modelsData.handlePageSizeChange,
           isMobile: isMobile,
           t: modelsData.t,
+          colors: colors,
         })}
         t={modelsData.t}
       >

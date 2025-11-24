@@ -44,6 +44,7 @@ import PricingCardSkeleton from './PricingCardSkeleton';
 import { useMinimumLoadingTime } from '../../../../../hooks/common/useMinimumLoadingTime';
 import { renderLimitedItems } from '../../../../common/ui/RenderUtils';
 import { useIsMobile } from '../../../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../../../hooks/common/useThemeColors';
 
 const CARD_STYLES = {
   container:
@@ -75,6 +76,7 @@ const PricingCardView = ({
   setSelectedRowKeys,
   openModelDetail,
 }) => {
+  const colors = useThemeColors();
   const showSkeleton = useMinimumLoadingTime(loading);
   const startIndex = (currentPage - 1) * pageSize;
   const paginatedModels = filteredModels.slice(
@@ -265,7 +267,7 @@ const PricingCardView = ({
                         {model.model_name}
                       </h3>
                       <div className='flex items-center gap-3 text-xs mt-1'>
-                        {formatPriceInfo(priceData, t)}
+                        {formatPriceInfo(priceData, t, colors)}
                       </div>
                     </div>
                   </div>

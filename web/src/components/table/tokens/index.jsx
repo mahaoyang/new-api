@@ -40,6 +40,7 @@ import TokensDescription from './TokensDescription';
 import EditTokenModal from './modals/EditTokenModal';
 import { useTokensData } from '../../../hooks/tokens/useTokensData';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../hooks/common/useThemeColors';
 import { createCardProPagination } from '../../../helpers/utils';
 
 function TokensPage() {
@@ -49,6 +50,7 @@ function TokensPage() {
     openFluentNotificationRef.current?.(key),
   );
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
   const latestRef = useRef({
     tokens: [],
     selectedKeys: [],
@@ -404,6 +406,7 @@ function TokensPage() {
           onPageSizeChange: tokensData.handlePageSizeChange,
           isMobile: isMobile,
           t: tokensData.t,
+          colors: colors,
         })}
         t={tokensData.t}
       >

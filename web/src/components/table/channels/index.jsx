@@ -25,6 +25,7 @@ import ChannelsFilters from './ChannelsFilters';
 import ChannelsTabs from './ChannelsTabs';
 import { useChannelsData } from '../../../hooks/channels/useChannelsData';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../hooks/common/useThemeColors';
 import BatchTagModal from './modals/BatchTagModal';
 import ModelTestModal from './modals/ModelTestModal';
 import ColumnSelectorModal from './modals/ColumnSelectorModal';
@@ -36,6 +37,7 @@ import { createCardProPagination } from '../../../helpers/utils';
 const ChannelsPage = () => {
   const channelsData = useChannelsData();
   const isMobile = useIsMobile();
+  const colors = useThemeColors();
 
   return (
     <>
@@ -76,6 +78,7 @@ const ChannelsPage = () => {
           onPageSizeChange: channelsData.handlePageSizeChange,
           isMobile: isMobile,
           t: channelsData.t,
+          colors: colors,
         })}
         t={channelsData.t}
       >
