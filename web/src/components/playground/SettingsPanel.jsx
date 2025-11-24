@@ -22,6 +22,7 @@ import { Card, Select, Typography, Button, Switch } from '@douyinfe/semi-ui';
 import { Sparkles, Users, ToggleLeft, X, Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { renderGroupOption, selectFilter } from '../../helpers';
+import { useThemeColors } from '../../hooks/common/useThemeColors';
 import ParameterControl from './ParameterControl';
 import ImageUrlInput from './ImageUrlInput';
 import ConfigManager from './ConfigManager';
@@ -47,6 +48,7 @@ const SettingsPanel = ({
   messages,
 }) => {
   const { t } = useTranslation();
+  const colors = useThemeColors();
 
   const currentConfig = {
     inputs,
@@ -137,7 +139,7 @@ const SettingsPanel = ({
             value={inputs.group}
             autoComplete='new-password'
             optionList={groups}
-            renderOptionItem={renderGroupOption}
+            renderOptionItem={renderGroupOption(colors)}
             style={{ width: '100%' }}
             dropdownStyle={{ width: '100%', maxWidth: '100%' }}
             className='!rounded-lg'

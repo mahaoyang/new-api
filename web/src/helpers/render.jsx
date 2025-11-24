@@ -76,10 +76,10 @@ import {
 } from 'lucide-react';
 
 // 获取侧边栏Lucide图标组件
-export function getLucideIcon(key, selected = false) {
+export function getLucideIcon(key, selected = false, colors) {
   const size = 16;
   const strokeWidth = 2;
-  const SELECTED_COLOR = 'var(--semi-color-primary)';
+  const SELECTED_COLOR = colors?.primary || 'var(--semi-color-primary)';
   const iconColor = selected ? SELECTED_COLOR : 'currentColor';
   const commonProps = {
     size,
@@ -782,7 +782,7 @@ export function truncateText(text, maxWidth = 200) {
   }
 }
 
-export const renderGroupOption = (item) => {
+export const renderGroupOption = (colors) => (item) => {
   const {
     disabled,
     selected,
@@ -804,13 +804,13 @@ export const renderGroupOption = (item) => {
     alignItems: 'center',
     padding: '8px 16px',
     cursor: disabled ? 'not-allowed' : 'pointer',
-    backgroundColor: focused ? 'var(--semi-color-fill-0)' : 'transparent',
+    backgroundColor: focused ? (colors?.fill || 'var(--semi-color-fill-0)') : 'transparent',
     opacity: disabled ? 0.5 : 1,
     ...(selected && {
-      backgroundColor: 'var(--semi-color-primary-light-default)',
+      backgroundColor: colors?.primaryLight || 'var(--semi-color-primary-light-default)',
     }),
     '&:hover': {
-      backgroundColor: !disabled && 'var(--semi-color-fill-1)',
+      backgroundColor: !disabled && (colors?.fillHover || 'var(--semi-color-fill-1)'),
     },
   };
 

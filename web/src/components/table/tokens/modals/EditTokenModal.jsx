@@ -29,6 +29,7 @@ import {
   selectFilter,
 } from '../../../../helpers';
 import { useIsMobile } from '../../../../hooks/common/useIsMobile';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 import {
   Button,
   SideSheet,
@@ -56,6 +57,7 @@ const { Text, Title } = Typography;
 
 const EditTokenModal = (props) => {
   const { t } = useTranslation();
+  const colors = useThemeColors();
   const [statusState, statusDispatch] = useContext(StatusContext);
   const [loading, setLoading] = useState(false);
   const isMobile = useIsMobile();
@@ -364,7 +366,7 @@ const EditTokenModal = (props) => {
                         label={t('令牌分组')}
                         placeholder={t('令牌分组，默认为用户的分组')}
                         optionList={groups}
-                        renderOptionItem={renderGroupOption}
+                        renderOptionItem={renderGroupOption(colors)}
                         showClear
                         style={{ width: '100%' }}
                       />
