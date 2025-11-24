@@ -49,6 +49,7 @@ import {
 } from '@douyinfe/semi-icons';
 import { getChannelModels } from '../../../../helpers';
 import { useTranslation } from 'react-i18next';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 
 const { Text, Title } = Typography;
 
@@ -58,6 +59,7 @@ const MODEL_MAPPING_EXAMPLE = {
 
 const EditTagModal = (props) => {
   const { t } = useTranslation();
+  const colors = useThemeColors();
   const { visible, tag, handleClose, refresh } = props;
   const [loading, setLoading] = useState(false);
   const [originModelOptions, setOriginModelOptions] = useState([]);
@@ -407,7 +409,7 @@ const EditTagModal = (props) => {
                   </Avatar>
                   <div>
                     <Text className='text-lg font-medium'>{t('标签信息')}</Text>
-                    <div className='text-xs text-gray-600'>
+                    <div className='text-xs' style={{ color: colors.textTertiary }}>
                       {t('标签的基本配置')}
                     </div>
                   </div>
@@ -441,7 +443,7 @@ const EditTagModal = (props) => {
                   </Avatar>
                   <div>
                     <Text className='text-lg font-medium'>{t('模型配置')}</Text>
-                    <div className='text-xs text-gray-600'>
+                    <div className='text-xs' style={{ color: colors.textTertiary }}>
                       {t('模型选择和映射设置')}
                     </div>
                   </div>
@@ -497,7 +499,8 @@ const EditTagModal = (props) => {
                     extraText={
                       <Space>
                         <Text
-                          className='!text-semi-color-primary cursor-pointer'
+                          className='cursor-pointer'
+                          style={{ color: colors.primary }}
                           onClick={() =>
                             handleInputChange(
                               'model_mapping',
@@ -508,7 +511,8 @@ const EditTagModal = (props) => {
                           {t('填入模板')}
                         </Text>
                         <Text
-                          className='!text-semi-color-primary cursor-pointer'
+                          className='cursor-pointer'
+                          style={{ color: colors.primary }}
                           onClick={() =>
                             handleInputChange(
                               'model_mapping',
@@ -519,7 +523,8 @@ const EditTagModal = (props) => {
                           {t('清空重定向')}
                         </Text>
                         <Text
-                          className='!text-semi-color-primary cursor-pointer'
+                          className='cursor-pointer'
+                          style={{ color: colors.primary }}
                           onClick={() => handleInputChange('model_mapping', '')}
                         >
                           {t('不更改')}
@@ -538,7 +543,7 @@ const EditTagModal = (props) => {
                   </Avatar>
                   <div>
                     <Text className='text-lg font-medium'>{t('高级设置')}</Text>
-                    <div className='text-xs text-gray-600'>
+                    <div className='text-xs' style={{ color: colors.textTertiary }}>
                       {t('渠道的高级配置选项')}
                     </div>
                   </div>
@@ -567,7 +572,8 @@ const EditTagModal = (props) => {
                     extraText={
                       <div className='flex gap-2 flex-wrap'>
                         <Text
-                          className='!text-semi-color-primary cursor-pointer'
+                          className='cursor-pointer'
+                          style={{ color: colors.primary }}
                           onClick={() =>
                             handleInputChange(
                               'param_override',
@@ -578,7 +584,8 @@ const EditTagModal = (props) => {
                           {t('旧格式模板')}
                         </Text>
                         <Text
-                          className='!text-semi-color-primary cursor-pointer'
+                          className='cursor-pointer'
+                          style={{ color: colors.primary }}
                           onClick={() =>
                             handleInputChange(
                               'param_override',
@@ -609,7 +616,8 @@ const EditTagModal = (props) => {
                           {t('新格式模板')}
                         </Text>
                         <Text
-                          className='!text-semi-color-primary cursor-pointer'
+                          className='cursor-pointer'
+                          style={{ color: colors.primary }}
                           onClick={() =>
                             handleInputChange('param_override', null)
                           }
@@ -638,7 +646,8 @@ const EditTagModal = (props) => {
                       <div className='flex flex-col gap-1'>
                         <div className='flex gap-2 flex-wrap items-center'>
                           <Text
-                            className='!text-semi-color-primary cursor-pointer'
+                            className='cursor-pointer'
+                          style={{ color: colors.primary }}
                             onClick={() =>
                               handleInputChange(
                                 'header_override',
@@ -657,7 +666,8 @@ const EditTagModal = (props) => {
                             {t('填入模板')}
                           </Text>
                           <Text
-                            className='!text-semi-color-primary cursor-pointer'
+                            className='cursor-pointer'
+                          style={{ color: colors.primary }}
                             onClick={() =>
                               handleInputChange('header_override', null)
                             }
@@ -689,7 +699,7 @@ const EditTagModal = (props) => {
                   </Avatar>
                   <div>
                     <Text className='text-lg font-medium'>{t('分组设置')}</Text>
-                    <div className='text-xs text-gray-600'>
+                    <div className='text-xs' style={{ color: colors.textTertiary }}>
                       {t('用户分组配置')}
                     </div>
                   </div>

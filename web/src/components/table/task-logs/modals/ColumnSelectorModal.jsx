@@ -20,6 +20,7 @@ For commercial licensing, please contact support@quantumnous.com
 import React from 'react';
 import { Modal, Button, Checkbox } from '@douyinfe/semi-ui';
 import { getTaskLogsColumns } from '../TaskLogsColumnDefs';
+import { useThemeColors } from '../../../../hooks/common/useThemeColors';
 
 const ColumnSelectorModal = ({
   showColumnSelector,
@@ -34,6 +35,7 @@ const ColumnSelectorModal = ({
   openContentModal,
   t,
 }) => {
+  const colors = useThemeColors();
   // Get all columns for display in selector
   const allColumns = getTaskLogsColumns({
     t,
@@ -74,7 +76,7 @@ const ColumnSelectorModal = ({
       </div>
       <div
         className='flex flex-wrap max-h-96 overflow-y-auto rounded-lg p-4'
-        style={{ border: '1px solid var(--semi-color-border)' }}
+        style={{ border: `1px solid ${colors.border}` }}
       >
         {allColumns.map((column) => {
           // Skip admin-only columns for non-admin users
