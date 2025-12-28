@@ -207,9 +207,7 @@ export const renderMonitorList = (
           </span>
         </div>
         <span className='text-xs text-gray-500'>
-          {typeof monitor.uptime === 'number'
-            ? (monitor.uptime * 100).toFixed(2) + '%'
-            : '--'}
+          {((monitor.uptime || 0) * 100).toFixed(2)}%
         </span>
       </div>
       <div className='flex items-center gap-2'>
@@ -218,7 +216,7 @@ export const renderMonitorList = (
         </span>
         <div className='flex-1'>
           <Progress
-            percent={typeof monitor.uptime === 'number' ? monitor.uptime * 100 : 0}
+            percent={(monitor.uptime || 0) * 100}
             showInfo={false}
             aria-label={`${monitor.name} uptime`}
             stroke={getUptimeStatusColor(monitor.status)}

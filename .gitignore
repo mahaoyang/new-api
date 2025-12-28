@@ -8,7 +8,6 @@ build
 *.db-journal
 logs
 web/dist
-web-user/dist
 .env
 one-api
 new-api

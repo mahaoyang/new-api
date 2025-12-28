@@ -24,10 +24,10 @@ const (
 )
 
 type Monitor struct {
-	Name   string   `json:"name"`
-	Uptime *float64 `json:"uptime,omitempty"` // nil 表示无统计/未知，避免被误展示为 0%
-	Status int      `json:"status"`
-	Group  string   `json:"group,omitempty"`
+	Name   string  `json:"name"`
+	Uptime float64 `json:"uptime"`
+	Status int     `json:"status"`
+	Group  string  `json:"group,omitempty"`
 }
 
 type UptimeGroupResult struct {
@@ -114,8 +114,7 @@ func fetchGroupData(ctx context.Context, client *http.Client, groupConfig map[st
 			monitorID := strconv.Itoa(m.ID)
 
 			if uptime, exists := heartbeatData.UptimeList[monitorID+uptimeKeySuffix]; exists {
-				u := uptime
-				monitor.Uptime = &u
+				monitor.Uptime = uptime
 			}
 
 			if heartbeats, exists := heartbeatData.HeartbeatList[monitorID]; exists && len(heartbeats) > 0 {
