@@ -20,6 +20,9 @@ tiktoken_cache
 .cache
 web/bun.lock
 
+# Windows alternate data stream artifacts
+*:Zone.Identifier
+
 electron/node_modules
 electron/dist
 data/

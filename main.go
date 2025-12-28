@@ -31,10 +31,16 @@ import (
 )
 
 //go:embed web/dist
-var buildFS embed.FS
+var adminBuildFS embed.FS
 
 //go:embed web/dist/index.html
-var indexPage []byte
+var adminIndexPage []byte
+
+//go:embed web-user/dist
+var userBuildFS embed.FS
+
+//go:embed web-user/dist/index.html
+var userIndexPage []byte
 
 func main() {
 	startTime := time.Now()
@@ -152,9 +158,10 @@ func main() {
 
 	InjectUmamiAnalytics()
 	InjectGoogleAnalytics()
+	InjectConsoleBase()
 
-	// 设置路由
-	router.SetRouter(server, buildFS, indexPage)
+	// 设置路由（传入双前端）
+	router.SetRouter(server, adminBuildFS, userBuildFS, adminIndexPage, userIndexPage)
 	var port = os.Getenv("PORT")
 	if port == "" {
 		port = strconv.Itoa(*common.Port)
@@ -184,7 +191,7 @@ func InjectUmamiAnalytics() {
 		analyticsInjectBuilder.WriteString("\"></script>")
 	}
 	analyticsInject := analyticsInjectBuilder.String()
-	indexPage = bytes.ReplaceAll(indexPage, []byte("<!--umami-->\n"), []byte(analyticsInject))
+	adminIndexPage = bytes.ReplaceAll(adminIndexPage, []byte("<!--umami-->\n"), []byte(analyticsInject))
 }
 
 func InjectGoogleAnalytics() {
@@ -205,7 +212,13 @@ func InjectGoogleAnalytics() {
 		analyticsInjectBuilder.WriteString("</script>")
 	}
 	analyticsInject := analyticsInjectBuilder.String()
-	indexPage = bytes.ReplaceAll(indexPage, []byte("<!--Google Analytics-->\n"), []byte(analyticsInject))
+	adminIndexPage = bytes.ReplaceAll(adminIndexPage, []byte("<!--Google Analytics-->\n"), []byte(analyticsInject))
+}
+
+func InjectConsoleBase() {
+	// 给管理后台HTML添加base标签，使所有相对路径从/console/开始
+	baseTag := []byte("<base href=\"/console/\">")
+	adminIndexPage = bytes.Replace(adminIndexPage, []byte("<head>"), []byte("<head>\n  "+string(baseTag)), 1)
 }
 
 func InitResources() error {
